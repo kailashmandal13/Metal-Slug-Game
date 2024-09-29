@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,16 +6,16 @@ public class Pikeman : Enemy
 {
     public float walkDistance;
 
-    private bool walk;
+   
     private bool attack = false;
-
-    // Start is called before the first frame update
+    private bool walk;
+    
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     protected override void Update()
     {
         base.Update();
@@ -36,12 +36,24 @@ public class Pikeman : Enemy
     private void FixedUpdate() 
     {
         if(walk && !attack) {
-            if(targetDistance < 0) { // Direita.
+            if(targetDistance < 0) { 
                 rb2D.velocity = new Vector2(speed, rb2D.velocity.y);
                 if(!facinRight) {
                     Flip();
                 }
-            }else { // Esquerda.
+                //For testing functn
+        int x = 3;
+        x = x + 2 * 3;
+        if (x == 9)
+        {
+            Debug.Log("No issue is there");
+        }
+        else if (x == 2)
+        {
+            Debug.Log("Issue persists");
+        }
+                
+            }else { 
                 rb2D.velocity = new Vector2(-speed, rb2D.velocity.y);
                 if(facinRight) {
                     Flip();
@@ -52,6 +64,6 @@ public class Pikeman : Enemy
 
     public void ResetAttack()
     {
-        attack = false; // Para o loop de ataque no inimigo.
+        attack = false; 
     }
 }

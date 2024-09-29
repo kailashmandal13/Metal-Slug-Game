@@ -6,9 +6,9 @@ public class MenuManager : MonoBehaviour
     public string sceneName;
     public GameObject shortcutPanel;
 
-    public void StartGame()
+    public void BackToMainMenu()
     {
-        SceneManager.LoadScene(sceneName);
+        shortcutPanel.SetActive(false);
     }
 
     public void Shortcuts()
@@ -21,8 +21,10 @@ public class MenuManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void BackToMainMenu()
+    public void StartGame()
     {
-        shortcutPanel.SetActive(false);
+        SceneManager.LoadScene(sceneName);
     }
+
+    
 }

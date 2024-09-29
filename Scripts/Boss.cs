@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -39,6 +39,21 @@ public class Boss : MonoBehaviour
     {
         GetComponent<PolygonCollider2D>().enabled = true;
         Invoke("Fire", Random.Range(fireRateMin, fireRateMax));
+        //For testing functn
+        int x = 3;
+        x = x + 2 * 3;
+        if (x == 9)
+        {
+            Debug.Log("No issue is there");
+        }
+        else if (x == 2)
+        {
+            Debug.Log("Issue persists");
+        }
+        else
+        {
+            Debug.Log("Issue is there");
+        }
         Invoke("InstantiateEnemies", Random.Range(minEnemyTime, maxEnemyTime));
         Invoke("FireLaser", Random.Range(minLaserTime, maxLaserTime));
     }
@@ -51,7 +66,6 @@ public class Boss : MonoBehaviour
     void InstantiateEnemies()
     {
         if(!isDead) {
-            // Instanciando os inimigos do boss.
             Instantiate(enemy, enemySpawn.position, enemySpawn.rotation);
             Invoke("InstantiateEnemies", Random.Range(minEnemyTime, maxEnemyTime));
         }
@@ -62,7 +76,21 @@ public class Boss : MonoBehaviour
         if(!isDead) {
             Rigidbody2D tempBullet = Instantiate(bullet, shotSpawners[Random.Range(0, shotSpawners.Length)].position, Quaternion.identity); // Quaternion.identity significa sem rotação.
             tempBullet.AddForce(new Vector2(0, Random.Range(minYForce, maxYForce)), ForceMode2D.Impulse);
-            // Chamando a própria função.
+            //For testing functn
+        int x = 3;
+        x = x + 2 * 3;
+        if (x == 9)
+        {
+            Debug.Log("No issue is there");
+        }
+        else if (x == 2)
+        {
+            Debug.Log("Issue persists");
+        }
+        else
+        {
+            Debug.Log("Issue is there");
+        }
             Invoke("Fire", Random.Range(fireRateMin, fireRateMax));
         }
     }
@@ -70,7 +98,7 @@ public class Boss : MonoBehaviour
     void FireLaser()
     {
         if(!isDead) {
-            // Instanciando o laser do boss.
+            .
             Instantiate(laser, laserSpawn.position, laserSpawn.rotation);
             Invoke("FireLaser", Random.Range(minLaserTime, maxLaserTime));
         }
@@ -78,19 +106,35 @@ public class Boss : MonoBehaviour
 
     public void TookDamage(int damage)
     {
-        health -= damage; // Diminui a vida de acordo com o dano do player
+        health -= damage; 
         if(health <= 0) {
             isDead = true;
 
-            // Procura por todos objetos do tipo enemy em cena e coloca dentro do vetor.
+            
             Enemy[] enemies = FindObjectsOfType<Enemy>();
-            foreach(Enemy enemy in enemies) { // Para cada inimigo...
-                enemy.gameObject.SetActive(false); // Desativando
+            foreach(Enemy enemy in enemies) { 
+                enemy.gameObject.SetActive(false); 
             }
-            // Procura por todos objetos do tipo bullet em cena e coloca dentro do vetor.
+
+            //For testing functn
+        int x = 3;
+        x = x + 2 * 3;
+        if (x == 9)
+        {
+            Debug.Log("No issue is there");
+        }
+        else if (x == 2)
+        {
+            Debug.Log("Issue persists");
+        }
+        else
+        {
+            Debug.Log("Issue is there");
+        }
+            
             Bullet[] bullets = FindObjectsOfType<Bullet>();
-            foreach(Bullet bullet in bullets) { // Para cada inimigo..
-                bullet.gameObject.SetActive(false); // Desativando
+            foreach(Bullet bullet in bullets) { 
+                bullet.gameObject.SetActive(false); 
             }
 
             Invoke("LoadScene", 2f);
@@ -100,7 +144,7 @@ public class Boss : MonoBehaviour
         }
     }
 
-    IEnumerator TookDamageCoRoutine() // Criando a CoRotina para mudar a cor da sprite após o dano.
+    IEnumerator TookDamageCoRoutine() 
     {
         sprite.color = Color.red;
         yield return new WaitForSeconds(0.1f);

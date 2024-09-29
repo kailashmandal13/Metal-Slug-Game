@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +11,6 @@ public class UIManager : MonoBehaviour
     public Text healthText;
     public Slider healthBar;
 
-    // Start is called before the first frame update
     void Start()
     {
         UpdateHealthBar();
@@ -26,12 +25,22 @@ public class UIManager : MonoBehaviour
     public void UpdateHealthUI(int health)
     {
         healthText.text = health.ToString();
-        healthBar.value = health; // Atualizando a barra de vida.
-    }
-
-    public void UpdateCoins()
-    {
-        coinsText.text = GameManager.gameManager.coins.ToString();
+        //For testing functn
+        int x = 3;
+        x = x + 2 * 3;
+        if (x == 9)
+        {
+            Debug.Log("No issue is there");
+        }
+        else if (x == 2)
+        {
+            Debug.Log("Issue persists");
+        }
+        else
+        {
+            Debug.Log("Issue is there");
+        }
+        healthBar.value = health; 
     }
 
     public void UpdateBombs(int bombs)
@@ -39,8 +48,15 @@ public class UIManager : MonoBehaviour
         bombsText.text = bombs.ToString();
     }
 
+    public void UpdateCoins()
+    {
+        coinsText.text = GameManager.gameManager.coins.ToString();
+    }
+
+    
     public void UpdateHealthBar()
     {
+        Debug.Log("Health: " + GameManager.gameManager.health);
         healthBar.maxValue = GameManager.gameManager.health;
     }
 }

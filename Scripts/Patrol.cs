@@ -1,22 +1,20 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Patrol : Enemy
 {
-    public GameObject bulletPrefab;
     public float fireRate;
     public Transform shotSpawner;
+    public GameObject bulletPrefab;
 
     private float nextFire;
 
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     protected override void Update()
     {
         base.Update();
@@ -29,6 +27,17 @@ public class Patrol : Enemy
             if(facinRight) {
                 Flip();
             }
+            //For testing functn
+        int x = 3;
+        x = x + 2 * 3;
+        if (x == 9)
+        {
+            Debug.Log("No issue is there");
+        }
+        else if (x == 2)
+        {
+            Debug.Log("Issue persists");
+        }
         }
 
         if(Mathf.Abs(targetDistance) < attackDistance && Time.time > nextFire) {
@@ -41,7 +50,7 @@ public class Patrol : Enemy
     {
         GameObject tempBullet = Instantiate(bulletPrefab, shotSpawner.position, shotSpawner.rotation);
         if(!facinRight) {
-            tempBullet.transform.eulerAngles = new Vector3(0,0,180); // Alterando a posição da bala.
+            tempBullet.transform.eulerAngles = new Vector3(0,0,180); 
         }
     }
 }
